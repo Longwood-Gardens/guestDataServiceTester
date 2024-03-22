@@ -78,7 +78,7 @@ async Task<string> Authenticate(string clientId, byte[] secret)
         clientEphemeral.Secret,
         challengeResponse.EphemeralPublic,
         challengeResponse.Salt,
-        ID,
+        clientId,
         privateKey);
 
 

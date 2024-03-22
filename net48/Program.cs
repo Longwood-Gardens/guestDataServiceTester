@@ -26,6 +26,7 @@ namespace guestDataServiceTester_net48
         // Your API Secret Key...
         static readonly byte[] SECRET_BYTES = "".HexToBytes();
 
+
         static readonly JsonSerializerOptions JSON_OPTIONS = new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
@@ -92,12 +93,12 @@ namespace guestDataServiceTester_net48
                 clientId, Encoding.UTF8.GetString(secret));
 
             // Use our ClientEphemeral Keypair's Secret key, the Server's Epmemeral Public key
-            // and the salt, ID, and private key to derive an SrpSession (Client Session)...
+            // and the salt, clientId, and private key to derive an SrpSession (Client Session)...
             var clientSession = client.DeriveSession(
                 clientEphemeral.Secret,
                 challengeResponse.EphemeralPublic,
                 challengeResponse.Salt,
-                ID,
+                clientId,
                 privateKey);
 
 
